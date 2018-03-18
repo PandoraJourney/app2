@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link } from 'react-router'
 import CartSummaryContainer from './Container/CartSummaryContainer'
 import UserNameComponent from './Component/UserNameComponent';
-import {injector} from 'react-services-injector';
+// import {injector} from 'react-services-injector';
 
 class App extends Component {
   

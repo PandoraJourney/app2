@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import CartDetailsComponent from '../Component/CartDetailsComponent'
-import {injector} from 'react-services-injector'
+// import {injector} from 'react-services-injector'
 
 class CartDetailsContainer extends Component {
 
@@ -11,7 +11,7 @@ class CartDetailsContainer extends Component {
   }
 
   componentDidMount() {
-    const {UserService} = injector.get();
+    // const {UserService} = injector.get();
     //axios.get('/api/users/' + UserService.getUsername() + '/cart-products').then((response) => {
     axios.get('/api/users'+'/cart-details').then((response) => {
       return this.setState({ items: response.data });
@@ -23,7 +23,7 @@ class CartDetailsContainer extends Component {
 
   handleItemRemove(item) {
     return function () {
-      const {UserService} = injector.get();
+      // const {UserService} = injector.get();
       // axios.delete('/api/users/' + UserService.getUsername() + '/cart-products/' + item.id).then((response) => {
       axios.post('/api/users/cart-details/'+ item.id).then((response) => {  
        this.setState({ items: response.data });
