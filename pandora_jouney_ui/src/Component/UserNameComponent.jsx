@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {injector} from 'react-services-injector'
+// import axios from 'axios';
 
 class UserNameComponent extends Component {
    constructor() {
@@ -15,9 +16,17 @@ class UserNameComponent extends Component {
       }  
       
       onSubmit = (e)=>{
-          e.preventDefault();
-          let {UserService} = injector.get();
-          UserService.setUser(this.username);
+            const {UserService} = injector.get();
+            UserService.setUser(this.state.name);
+            this.setState( {name :UserService.user});
+            // axios.post('http://localhost:8081/api/users/' + this.state.name, this.state.name)
+            // .then(response => {
+                
+            // })  
+            // .catch(error => {
+            //     console.log(error);
+            // })
+            e.preventDefault();
           console.log(UserService.get());
       }
 
@@ -37,5 +46,6 @@ class UserNameComponent extends Component {
     }
 
 } 
+
 
 export default injector.connect(UserNameComponent);
