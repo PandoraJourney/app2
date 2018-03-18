@@ -6,26 +6,25 @@ class EventEmitter extends Service{
     this._subscribers = [];
   }
   
-  subscribe = (sub, handler, eventType) =>{
+  subscribe(sub, handler, eventType){
     this._subscribers.push({
       sub: sub,
       handler: handler,
       eventType: eventType
-    });}
+    });
+    console.log('subscribed');
+  }
 
 
- unsubscribe = (subToUnsubscribe)=> {
+ unsubscribe(subToUnsubscribe){
     this._subscribers = this._subscribers.filter((sub)=> { return sub.sub !== subToUnsubscribe; });
   }
 
-  publish = (event)=> {
+  publish(event){
+    console.log('publish called');
     this._subscribers.filter((sub) =>{ return sub.eventType === event.eventType || !sub.eventType; })
-      .forEach(function(sub) {
-        sub.handler(event);
-      });
+      .forEach((sub)=> {sub.handler(event);});
   };
-
-
 }
 
 EventEmitter.publicName = 'EventEmitter';

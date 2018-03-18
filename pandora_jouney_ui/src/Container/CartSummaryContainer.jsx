@@ -3,35 +3,50 @@ import CartSummaryComponent from '../Component/CartSummaryComponent'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-// import picture from './samsung.jpg';
-
-
+// import picture from './samsung.jpg'
 import {injector} from 'react-services-injector'
+
 
 class CartSummaryContainer extends Component {
   constructor(props, context) {
     super(props, context);
-    this.handleDetailsClick = this.handleDetailsClick.bind(this);
-    this.state = { products: [] };
+    this.state = { itemCount: 0 };
   }
 
-  componentWillMount() {
-    axios.get('/api/cart-details').then((response) => {
-      this.setState({ products: response.data });
-    });
+  componentDidMount() {
+    const {EventEmitter} = injector.get();
+    EventEmitter.subscribe(this, this.onCartEvent, 'AddToCart');
+    EventEmitter.subscribe(this, this.onCartEvent, 'RemoveFromCart');
+    this.getAndUpdateCartItems();
   }
 
-  handleDetailsClick(productId) {
-    const {UserService} = injector.get();
-    return (() => {
-      this.context.router.push('/products/' + UserService.user()+'/'+ productId, { id: productId });
-    });
+  componentWillUnmount(){
+    const {EventEmitter} = injector.get();
+    EventEmitter.unsubscribe(this);
   }
+
+  onCartEvent=()=>{
+    this.setState({itemCount:7});
+    // this.getAndUpdateCartItems();
+  }
+
+  getAndUpdateCartItems=()=>{
+    // if (UserService.getUsername()) {
+    //   axios.get('/api/users/' + UserService.getUsername() + '/cart-products').then(function (response) {
+    //     self.setState({
+    //       itemCount: response.data.length
+    //     });
+    //   });
+    axios.get('https://itpro2017.herokuapp.com/api/products').then((response) =>{
+          this.setState({itemCount: response.data.length});
+        });
+    }
+
 
   render() {
     return (
       <div>
-        <CartSummaryComponent/>
+        <CartSummaryComponent itemCount={this.state.itemCount}/>
           </div>
     )
   }
@@ -41,4 +56,4 @@ CartSummaryContainer.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
-export default CartSummaryContainer;
+export default injector.connect(CartSummaryContainer);
