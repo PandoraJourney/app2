@@ -7,6 +7,7 @@ class ProductListAdministrationComponent extends Component {
   constructor(context){
     super(context);
   }
+  
   render() {
     var itemsHtml = this.props.products.map((item, index) => {
       var url = '/admin/products/' + item.id;

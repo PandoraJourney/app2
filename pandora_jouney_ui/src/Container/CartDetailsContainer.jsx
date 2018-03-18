@@ -10,10 +10,10 @@ class CartDetailsContainer extends Component {
     this.state = { items: [] };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // const {UserService} = injector.get();
     //axios.get('/api/users/' + UserService.getUsername() + '/cart-products').then((response) => {
-    axios.get('/cart-details').then((response) => {
+    axios.get('https://itpro2017.herokuapp.com/api/products').then((response) => {
       return this.setState({ items: response.data });
       //console.log(response);
     }).catch(function (error) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import image from './samsung.jpg'
+import image from './samsung.jpg'
 
 class CartDetailsComponent extends Component {
     render() {

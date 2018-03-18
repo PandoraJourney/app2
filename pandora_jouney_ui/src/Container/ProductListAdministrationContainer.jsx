@@ -8,13 +8,13 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 class ProductListAdministrationContainer extends Component{
     
      constructor(context) {
-         super(context)
-       this.state = { products: [] };
+        super(context)
+        this.state = { products: [] };
       }
     
-      componentDidMount() {
+      componentWillMount() {
         axios.get('https://itpro2017.herokuapp.com/api/products').then((response) => {
-          this.setState({ products: response.data });
+          this.setState(()=>{return{ products: response.data} });
         });
       }
     

@@ -5,20 +5,16 @@ class UserNameComponent extends Component {
    constructor() {
        super();
        this.handleUsernameChange = this.handleUsernameChange.bind(this);
-        this.state =  { username: "Default" };
+        this.state =  { username: "" };
       }    
-      componentDidMount() {
-       
-        this.setState({ username: "Juozas" });
-      }
-    
+
       handleUsernameChange(e) {
-       const {UserService} = injector.get();
+       let {UserService} = injector.get();
         var username = e.target.value;
         UserService.setUser(username);
        this.setState({ username: username });
+       
       }      
-
 
     render() {
         return (

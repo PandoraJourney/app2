@@ -3,8 +3,8 @@ import ProductListComponent from '../Component/ProductListComponent'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-// import {injector} from 'react-services-injector';
-// import picture from './samsung.jpg';
+import {injector} from 'react-services-injector';
+import picture from './samsung.jpg';
 
 
 class ProductListContainer extends Component {
