@@ -7,7 +7,7 @@ class CartSummaryComponent extends Component {
     render() {
         return (
             <div>
-                <span className="glyphicon glyphicon glyphicon-shopping-cart">&nbsp;</span>
+                <span className="glyphicon glyphicon glyphicon-shopping-cart">&nbsp; {this.props.itemCount}</span>
             </div>);
     }
 

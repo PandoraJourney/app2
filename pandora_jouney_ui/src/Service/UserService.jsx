@@ -3,7 +3,8 @@ import { Service } from 'react-services-injector';
 class UserService extends Service {
   constructor() {
     super();
-    this.setUser(null);
+    // this.setUser(null);
+    this.User='';
   }
 
   setUser(user) {
@@ -16,6 +17,6 @@ class UserService extends Service {
   }
 }
 
-Storage.publicName = 'UserService';
+UserService.publicName = 'UserService';
 
 export default UserService;

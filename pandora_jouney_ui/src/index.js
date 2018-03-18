@@ -9,7 +9,7 @@ import ProductListAdministrationContainer from './Container/ProductListAdministr
 import ProductAdministrationContainer from './Container/ProductAdministrationContainer'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import {injector} from 'react-services-injector';
-import services from './Service/UserService';
+import services from './Service';
 
 injector.register(services);
 

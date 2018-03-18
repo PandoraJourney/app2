@@ -15,7 +15,7 @@ class CartSummaryContainer extends Component {
     this.state = { products: [] };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get('/api/cart-details').then((response) => {
       this.setState({ products: response.data });
     });

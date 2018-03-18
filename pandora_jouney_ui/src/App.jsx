@@ -8,7 +8,7 @@ import {injector} from 'react-services-injector';
 class App extends Component {
   
   render() {
-   const {Storage} = injector.get();
+   const {UserService} = injector.get();
     return (
       <div className="container">
         <div className="row">
@@ -36,4 +36,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default injector.connect(App,{toRender: ['UserService']});

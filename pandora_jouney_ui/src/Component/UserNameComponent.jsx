@@ -9,12 +9,17 @@ class UserNameComponent extends Component {
       }    
 
       handleUsernameChange(e) {
-       let {UserService} = injector.get();
-        var username = e.target.value;
-        UserService.setUser(username);
+        let username  = e.target.value;
+        console.log({username});
        this.setState({ username: username });
-       
-      }      
+      }  
+      
+      onSubmit = (e)=>{
+          e.preventDefault();
+          let {UserService} = injector.get();
+          UserService.setUser(this.username);
+          console.log(UserService.get());
+      }
 
     render() {
         return (
@@ -25,6 +30,7 @@ class UserNameComponent extends Component {
                     placeholder="Username"
                     value={this.state.username}
                     onChange={this.handleUsernameChange}
+                    onSubmit={this.onSubmit}
                 />
             </div>
         );
