@@ -30,11 +30,11 @@ ReactDOM.render(
       <Route path="/products" component={ProductListContainer} />
       <Route path="/products/:id" component={ProductDetailsContainer} />
       <Route path={"/cart-details"} component={CartDetailsContainer} />
-      {/* <Route path="/admin" component={Admin} >
+      <Route path="/admin" component={Admin} >
         <IndexRoute component={ProductListAdministrationContainer} />
         <Route path="/admin/products/new" component={ProductAdministrationContainer} />
         <Route path="/admin/products/:productId" component={ProductAdministrationContainer} />
-      </Route> */}
+      </Route>
       <Route path="*" component={NoMatch} />
     </Route>
 

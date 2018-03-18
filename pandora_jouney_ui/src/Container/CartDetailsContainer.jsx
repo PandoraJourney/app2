@@ -13,7 +13,7 @@ class CartDetailsContainer extends Component {
   componentDidMount() {
     // const {UserService} = injector.get();
     //axios.get('/api/users/' + UserService.getUsername() + '/cart-products').then((response) => {
-    axios.get('/api/users'+'/cart-details').then((response) => {
+    axios.get('/cart-details').then((response) => {
       return this.setState({ items: response.data });
       //console.log(response);
     }).catch(function (error) {
@@ -37,5 +37,5 @@ class CartDetailsContainer extends Component {
   }
 }
 
-export default injector.connect(CartDetailsContainer);
-//export default CartDetailsContainer;
+// export default injector.connect(CartDetailsContainer);
+export default CartDetailsContainer;

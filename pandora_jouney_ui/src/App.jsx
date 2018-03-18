@@ -15,10 +15,10 @@ class App extends Component {
             <nav className="navbar navbar-inverse">
               <div className="container-fluid">
                 <div className="navbar-header">
-                  <Link className="navbar-brand" to="/institution-list" activeStyle={{ color: 'red' }} >Home</Link>
+                  <Link className="navbar-brand" to="/products" activeStyle={{ color: 'red' }} >Home</Link>
                 </div>
                 <ul className="nav navbar-nav">
-                  <li className="active"><Link to="/books" activeStyle={{ color: 'red' }}>Admin</Link></li>
+                  <li className="active"><Link to="/admin" activeStyle={{ color: 'red' }}>Admin</Link></li>
                 </ul>
                 <form className="navbar-form navbar-left" action="/action_page.php">
                   <UserNameComponent />
