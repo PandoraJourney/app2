@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import CartDetailsComponent from '../Component/CartDetailsComponent'
-// import {injector} from 'react-services-injector'
+import {injector} from 'react-services-injector'
 
 class CartDetailsContainer extends Component {
 
@@ -21,15 +21,16 @@ class CartDetailsContainer extends Component {
     });
   }
 
-  handleItemRemove(item) {
-    return function () {
+  handleItemRemove=(item)=> {
+    const {EventEmitter} = injector.get();
       // const {UserService} = injector.get();
       // axios.delete('/api/users/' + UserService.getUsername() + '/cart-products/' + item.id).then((response) => {
-      axios.post('/api/users/cart-details/'+ item.id).then((response) => {  
-       this.setState({ items: response.data });
-        // EventEmitter.publish({ eventType: 'RemoveFromCart' });
-      });
-    };
+    //   axios.post('/api/users/cart-details/'+ item.id).then((response) => {  
+    //    this.setState({ items: response.data });
+    //     EventEmitter.publish({ eventType: 'RemoveFromCart' });
+    //   });
+    // };
+    EventEmitter.publish({ eventType: 'RemoveFromCart' });  
   }
 
   render() {
@@ -38,4 +39,4 @@ class CartDetailsContainer extends Component {
 }
 
 // export default injector.connect(CartDetailsContainer);
-export default CartDetailsContainer;
+export default injector.connect(CartDetailsContainer);

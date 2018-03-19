@@ -10,7 +10,7 @@ class CartDetailsComponent extends Component {
                     <tr >
                         {/* <td><img className="media-object" src={image} style={{ width: '50px' }} /></td> */}
                         <td>{item.title}</td>
-                        <td><button className="btn btn-danger" >Remove from cart</button></td>
+                        <td><button className="btn btn-danger" onClick={this.props.onItemRemove} >Remove from cart</button></td>
                     </tr>
                 );
             });

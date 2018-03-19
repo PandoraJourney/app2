@@ -5,20 +5,20 @@ import {injector} from 'react-services-injector'
 class UserNameComponent extends Component {
    constructor() {
        super();
-       this.handleUsernameChange = this.handleUsernameChange.bind(this);
-        this.state =  { username: "" };
+       this.state =  { username: "" };
       }    
 
-      handleUsernameChange(e) {
+      handleUsernameChange=(e)=> {
         let username  = e.target.value;
-        console.log({username});
-       this.setState({ username: username });
+        this.setState({ username: username });
       }  
       
-      onSubmit = (e)=>{
+      handleSubmit=(e)=>{
+            e.preventDefault();
+            console.log(this.state.username);
             const {UserService} = injector.get();
-            UserService.setUser(this.state.name);
-            this.setState( {name :UserService.user});
+            UserService.setUser(this.state.username);
+            // this.setState( {name :UserService.user});
             // axios.post('http://localhost:8081/api/users/' + this.state.name, this.state.name)
             // .then(response => {
                 
@@ -26,21 +26,16 @@ class UserNameComponent extends Component {
             // .catch(error => {
             //     console.log(error);
             // })
-            e.preventDefault();
-          console.log(UserService.get());
+          console.log(UserService.user);
       }
 
     render() {
         return (
             <div className="form-group">
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Username"
-                    value={this.state.username}
-                    onChange={this.handleUsernameChange}
-                    onSubmit={this.onSubmit}
-                />
+            <form onSubmit={this.handleSubmit}>            
+                    <input type="text" value={this.state.username} placeholder="Username"  onChange={this.handleUsernameChange} />
+                <input type="submit" value="Login" />
+            </form>
             </div>
         );
     }

@@ -21,13 +21,16 @@ class App extends Component {
                 <ul className="nav navbar-nav">
                   <li><Link to="/admin" activeClassName="active">Admin</Link></li>
                 </ul>
-                <form className="navbar-form navbar-left" action="/action_page.php">
-                  <UserNameComponent />
-                </form>
-                <ul className="nav navbar-nav navbar-right">
-                  <li><Link to="/cart-details"><CartSummaryContainer/></Link></li>
+                {/* <form className="navbar-form navbar-left" action="/action_page.php"> */}
+                <ul className="nav navbar-nav">
+                  <li><UserNameComponent /></li>
                 </ul>
-              </div>
+                  
+                {/* </form> */}
+                <ul className="nav navbar-nav navbar-right">
+                  <li><Link to="/cart-details">{UserService.user} <CartSummaryContainer/></Link></li>
+                </ul>
+               </div>
             </nav>
           </div>
         </div>
